@@ -1,0 +1,4 @@
+update: all
+requirements:
+  - Pipfile
+  - Pipfile.lock
