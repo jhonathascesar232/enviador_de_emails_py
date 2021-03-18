@@ -9,6 +9,7 @@ name = "pypi"
 flake8 = "*"
 pytest = "*"
 autopep8 = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.9"
