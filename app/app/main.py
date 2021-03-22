@@ -19,15 +19,25 @@ def ler_arquivo(arquivo: str):
 if __name__ == '__main__':
     # ler arquivo settings.json
     DATA = ler_arquivo('settings.json')
-    DE = DATA['EMAIL']  # 'enviadordeemail99@gmail.com'
     PASSWORD = DATA['PASSWORD']  # 'freefire1'
-    PARA = DATA['TO']  # "jhonathascesar232@gmail.com"
-
-    msg = email.message.Message()
-
-    MSG = """
-Helo Jhonathas 222222
+    # extrutura da msg
+    msg = email.message.Message()  # DICT com a extrutura da msg
+    msg['Subject'] = 'Assunto da Mensagem'
+    body = """
+<h1>Ola, email.message.Message()</h1>
+<p>
+    Corpo da Mensagens
+    </br>
+    <link style:"border: 1px solid black; color: white; text-decoration: None; text-tranform: None">
+        Click
+    </link>
+</p>
     """
+    msg['From'] = DATA['EMAIL']
+    msg['To'] = DATA['TO']
+    msg.add_header('Content-Type', 'text/html')
+    msg.set_payload(body)  # code de da msg
+
     context = ssl.create_default_context()
     # criado conexão com gmail
     with smtplib.SMTP('smtp.gmail.com', 587) as conexao:
@@ -35,5 +45,9 @@ Helo Jhonathas 222222
         conexao.starttls(
             context=context
         )  # Criptohgrafa os dados
-        conexao.login(DE, PASSWORD)
-        conexao.sendmail(DE, PARA, MSG)
+        conexao.login(msg['From'], PASSWORD)
+        conexao.sendmail(
+            msg['From'],
+            msg['To'],
+            msg.as_string().encode('utf-8')
+        )
