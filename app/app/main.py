@@ -25,8 +25,8 @@ if __name__ == '__main__':
 
     msg = email.message.Message()
 
-    MSG = f"""
-    Helo Jhonathas 222222
+    MSG = """
+Helo Jhonathas 222222
     """
     context = ssl.create_default_context()
     # criado conexão com gmail
