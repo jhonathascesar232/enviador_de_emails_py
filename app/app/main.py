@@ -28,9 +28,9 @@ if __name__ == '__main__':
 <p>
     Corpo da Mensagens
     </br>
-    <link style:"border: 1px solid black; color: white; text-decoration: None; text-tranform: None">
+    <a href="#" style:"padding: 1em 2em;text-weight: 300; border: 1px solid black; color: white; text-decoration: None; text-tranform: None">
         Click
-    </link>
+    </a>
 </p>
     """
     msg['From'] = DATA['EMAIL']
